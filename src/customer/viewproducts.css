@@ -1,0 +1,81 @@
+/* View products CSS */
+.products-container {
+    margin: 20px;
+  }
+  
+  .products-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .products-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items from left to right */
+  }
+  
+  .product-card {
+    width: calc(33.33% - 20px); /* Each card takes up 33.33% of the width */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-front {
+    padding: 20px;
+  }
+  
+  .product-image {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-details {
+    text-align: center;
+  }
+  
+  .product-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .product-description {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .product-price {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .buy-now-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .buy-now-button:hover {
+    background-color: #45a049;
+  }
+  
+  .no-products {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px;
+  }
+  

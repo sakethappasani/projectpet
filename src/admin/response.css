@@ -1,0 +1,52 @@
+.responses-container {
+  text-align: center;
+}
+
+.responses-header {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  max-width: 900px; /* Set a fixed width for the container */
+  margin: 0 auto; /* Center the container */
+  text-align: left; /* Ensure text is aligned to the left */
+}
+
+.card {
+  width: calc(33.33% - 20px); /* Adjust the width for three items per row */
+  margin-right: 20px; /* Add spacing between cards */
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+  display: inline-block; /* Display cards inline */
+  vertical-align: top; /* Align cards at the top */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.card:nth-child(3n) {
+  margin-right: 0; /* Remove margin from every third card to ensure alignment */
+}
+
+.card p {
+  margin: 5px 0;
+}
+
+.button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block; /* Change display to block to occupy full width */
+  width: 100%; /* Set button width to 100% */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #d32f2f;
+}
