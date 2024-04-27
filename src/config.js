@@ -1,5 +1,5 @@
 const config = {
-    url : 'http://localhost:31792/'
+    url : 'https://backendapp-tnpp.onrender.com/'
 }
 
 module.exports = config
