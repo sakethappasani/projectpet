@@ -51,7 +51,7 @@ export default function CustomerLogin({onCustomerLogin}) {
           </div>
           <button type="submit" className="submit-button">Login</button>
         </form>
-        <p>Don't have an account? <a href="/registration">Register</a></p>
+        <p>Don't have an account? <a href="https://sdppaams.netlify.app/registration">Register</a></p>
       </div>
     </div>
   );
