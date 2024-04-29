@@ -15,7 +15,7 @@ const AdminNavBar = () => {
     localStorage.removeItem('admin')
     localStorage.removeItem('isAdminLoggedIn')
 
-    navigate('/home')
+    navigate('https://sdppaams.netlify.app')
     window.location.reload()
   }
 
