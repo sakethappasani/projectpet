@@ -22,6 +22,7 @@ export default function AdminLogin({onAdminLogin}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(formData)
       const response = await axios.post(`${config.url}checkadminlogin`, formData);
       if (response.data != null) 
       {

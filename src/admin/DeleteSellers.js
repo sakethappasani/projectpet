@@ -25,7 +25,7 @@ export default function DeleteSellers() {
     try {
       const confirmDelete = window.confirm("Are you sure you want to delete this seller?");
       if (confirmDelete) {
-        await axios.delete(`${config.url}/deleteseller/${email}`);
+        await axios.delete(`${config.url}deleteseller/${email}`);
         fetchSellers();
         toast.success('Seller deleted successfully!');
       } else {

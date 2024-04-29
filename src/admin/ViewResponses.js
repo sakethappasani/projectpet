@@ -25,7 +25,7 @@ export default function ViewResponses() {
     try {
       const confirmDelete = window.confirm("Are you sure you want to delete this response?");
       if (confirmDelete) {
-        await axios.delete(`${config.url}/deleteresponses/${email}`);
+        await axios.delete(`${config.url}deleteresponses/${email}`);
         fetchResponses();
         toast.success('Response deleted successfully!');
       } else {

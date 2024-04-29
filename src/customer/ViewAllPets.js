@@ -16,16 +16,17 @@ export default function ViewAllPets() {
       const parsedCustomerData = JSON.parse(storedCustomerData);
       setCustomerData(parsedCustomerData);
     }
-  }, [])
+  }, []);
 
   const fetchPets = async () => {
-    if (customerData && customerData.custID) { 
+    if (customerData && customerData.custID) {
       try {
-        const response = await axios.get(`${config.url}/viewallpets`);
-        const availablePets = response.data.filter(pet => pet.adptstatus === "available");
+        const response = await axios.get(`${config.url}viewallpets`);
+        const availablePets = response.data.filter(pet => pet.adptstatus === "available" && pet.customerID !== customerData.custID);
         setPets(availablePets);
       } catch (err) {
-        console.log(err.message);
+        toast.error("Failed to fetch pets. Please try again later.");
+        console.error(err.message);
       }
     }
   };
@@ -34,25 +35,22 @@ export default function ViewAllPets() {
     fetchPets();
   });
 
-  const adoptPet = async (a, b) => {
+  const adoptPet = async (petId, customerId) => {
     try {
-      const confirmAdopt = window.confirm("Are you sure you want to Adopt the Pet")
-      if(confirmAdopt)
-      {
+      const confirmAdopt = window.confirm(`Are you sure you want to adopt this pet?`);
+      if (confirmAdopt) {
         const response = await axios.post(
-          `${config.url}/adoptpet`,
+          `${config.url}adoptpet`,
           {
             "adoptedBy": `${customerData.firstname} ${customerData.lastname}`,
-            "customerID": b,
-            "petID": a
+            "customerID": customerId,
+            "petID": petId
           }
         );
         await fetchPets();
         toast.success(response.data);
-      }
-      else
-      {
-        toast.error("Adoption Process Failed");
+      } else {
+        toast.error("Adoption process canceled.");
       }
     } catch (error) {
       toast.error(error.response.data);
@@ -82,7 +80,7 @@ export default function ViewAllPets() {
                       <p><strong>Gender:</strong> {pet.gender}</p>
                       <p><strong>Age:</strong> {pet.age}</p>
                       <p><strong>Added By:</strong> {pet.addedby}</p>
-                      <button className="adopt-button" onClick={() => adoptPet(pet.petID, customerData.custID)}>Adopt</button>
+                      <button className="adopt-button" onClick={() => adoptPet(pet.petID, pet.customerID)}>Adopt</button>
                     </div>
                   </div>
                 </div>

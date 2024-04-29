@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../customer/viewproducts.css'; // Import CSS file for styling
-import image from '../image2.jpeg'
+import image from '../image2.jpeg';
 import { ToastContainer, toast } from 'react-toastify';
 import config from '../config';
 
@@ -10,13 +10,18 @@ export default function MyProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const storedSellerDara = localStorage.getItem('seller');
-    if (storedSellerDara) {
-      const parsedSellerData = JSON.parse(storedSellerDara);
+    const storedSellerData = localStorage.getItem('seller');
+    if (storedSellerData) {
+      const parsedSellerData = JSON.parse(storedSellerData);
       setSellerData(parsedSellerData);
     }
   }, []);
 
+  useEffect(() => {
+    if (sellerData) {
+      fetchProducts();
+    }
+  });
 
   const fetchProducts = async () => {
     try {
@@ -27,26 +32,24 @@ export default function MyProducts() {
     }
   };
 
-  useEffect(() => {
-    fetchProducts();
-  });
-
   const deleteProduct = async (productID) => {
     try {
-        const confirmDelete = window.confirm("Are you sure you want to delete this Product ?");
-        if (confirmDelete) {
-            await axios.delete(`${config.url}/deleteproduct/${productID}`); // Provide the correct endpoint URL
-
-            fetchProducts();
-            toast.success("Product Deleted Successfully");
+      const confirmDelete = window.confirm("Are you sure you want to delete this Product ?");
+      if (confirmDelete) {
+        const response = await axios.delete(`${config.url}/deleteproduct/${productID}`);
+        if (response.status === 200) {
+          fetchProducts();
+          toast.success("Product Deleted Successfully");
         } else {
-            toast.error("Deletion Cancelled");
+          toast.error("Failed to delete product");
         }
+      } else {
+        toast.error("Deletion Cancelled");
+      }
     } catch (error) {
-        toast.error("Failed to Delete Product");
+      toast.error("Failed to Delete Product");
     }
-}
-
+  }
 
   return (
     <div>
@@ -65,7 +68,7 @@ export default function MyProducts() {
                     <h2 className="product-name">{product.productName}</h2>
                     <p className="product-description">{product.addedBy}</p>
                     <p className="product-price">Price: {product.price}</p>
-                    <button className="buy-now-button" onClick={()=> deleteProduct(product.productID)}>Delete</button>
+                    <button className="delete-button" onClick={() => deleteProduct(product.productID)}>Delete</button>
                   </div>
                 </div>
               </div>

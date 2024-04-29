@@ -20,7 +20,7 @@ const MyPets = () => {
   const fetchPets = async () => {
     if (customerData && customerData.custID) { 
       try {
-        const response = await axios.get(`${config.url}/mypets/${customerData.custID}`);
+        const response = await axios.get(`${config.url}mypets/${customerData.custID}`);
         setPets(response.data);
       } catch (err) {
         console.log(err.message);

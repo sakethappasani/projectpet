@@ -1,5 +1,5 @@
 const config = {
-    url : 'https://backendapp-hxyy.onrender.com'
+    url : 'http://localhost:31792/'
 }
 
 module.exports = config
