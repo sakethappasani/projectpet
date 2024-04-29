@@ -39,7 +39,7 @@ export default function CustomerRegistration() {
         });
         toast.success('Registered successfully! Redirecting to login page...');
         setTimeout(() => {
-          window.location.href = "/customerlogin"; 
+          window.location.href = "https://sdppaams.netlify.app/customerlogin"; 
         }, 3000);
       }
     } catch (error) {
