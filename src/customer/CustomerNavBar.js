@@ -14,7 +14,7 @@ const CustomerNavBar = () => {
   const handleLogout = () => {
     localStorage.removeItem('isCustomerLoggedIn')
     localStorage.removeItem('customer')
-    navigate("https://sdppaams.netlify.app/home")
+    navigate("")
     window.location.reload()
   }
 
