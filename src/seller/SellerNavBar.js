@@ -12,7 +12,7 @@ const SellerNavBar = () => {
     localStorage.removeItem('isSellerLoggedIn')
     localStorage.removeItem('seller')
     
-    navigate("/home")
+    navigate("")
     window.location.reload()
   }
 
